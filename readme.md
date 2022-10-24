@@ -1,4 +1,4 @@
-# litongjava-go-simple-http-server
+# http-server
 
 一个简单的go服务器
 ## 构建
@@ -11,7 +11,7 @@ go build
 启动服务器
 
 ```shell
-litongjava-go-simple-http-server --port 3000
+http-server --port 3000
 ```
 
 默认端口是3000

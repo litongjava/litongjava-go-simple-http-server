@@ -1,3 +1,3 @@
-module litongjava-go-simple-http-server
+module http-server
 
 go 1.16

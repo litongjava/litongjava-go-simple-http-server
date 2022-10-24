@@ -114,7 +114,6 @@ hs_err_pid*
 
 
 ### Leiningen template
-classes/
 target/
 logs/
 checkouts/
@@ -127,3 +126,6 @@ checkouts/
 querydsl/
 
 .DS_Store
+
+litongjava-go-simple-http-server.exe
+http-server.exe
