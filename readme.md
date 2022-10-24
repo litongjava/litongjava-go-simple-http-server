@@ -1,7 +1,10 @@
 # litongjava-go-simple-http-server
 
 一个简单的go服务器
-
+## 构建
+```shell
+go build
+```
 ## 使用
 
 新建一个html,任意内容  
