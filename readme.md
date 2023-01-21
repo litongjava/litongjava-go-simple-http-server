@@ -1,6 +1,11 @@
 # http-server
 
-一个简单的go服务器
+一个简单的go服务器  
+https://gitee.com/ppnt/litongjava-go-simple-http-server  
+https://github.com/litongjava/litongjava-go-simple-http-server
+
+## 下载
+前往release界面下载,支持Windows,Linux,MacOS
 ## 构建
 ```shell
 go build
