@@ -4,22 +4,18 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"net/http"
-	"os"
+	"strconv"
 )
 
 func main() {
-	port := "3000"
-	for i := 1; i < len(os.Args); i += 2 {
-		param := os.Args[i]
-		if param == "--port" {
-			port = os.Args[i+1]
-		}
-	}
-	log.Println("litongjava-go-simple-http-server start on", port)
-
-	err := http.ListenAndServe(":"+port, http.FileServer(http.Dir(".")))
+	port := flag.Int("port", 3000, "server port.")
+	dir := flag.String("dir", ".", "wrok path.")
+	addr := ":" + strconv.Itoa(*port)
+	log.Println("litongjava-go-simple-http-server start on", addr, *dir)
+	err := http.ListenAndServe(addr, http.FileServer(http.Dir(*dir)))
 	if err != nil {
 		log.Fatalln(err)
 	}
