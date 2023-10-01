@@ -51,7 +51,10 @@ jobs:
           path: http-server
 
   build_ubuntu:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-20.04, ubuntu-18.04, ubuntu-latest ]
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -71,9 +74,8 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: http-server-linux-amd64-${{ steps.glibc-version.outputs.glibc }}-1.0.4
+          name: http-server-linux-amd64-glibc-${{ steps.glibc-version.outputs.glibc }}-${{ matrix.os }}-1.0.4
           path: http-server
-
 #  build_windows:
 #    runs-on: windows-latest
 #    steps:
