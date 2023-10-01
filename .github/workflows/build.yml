@@ -89,7 +89,7 @@ jobs:
 #        with:
 #          name: http-server-windows-amd64-1.0.4.zip
 #          path: http-server.exe
-  build_windows:
+  build_windows_with_ubuntu:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
