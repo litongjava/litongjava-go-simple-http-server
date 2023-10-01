@@ -26,7 +26,7 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: http-server-darwin-amd64-1.0.4.tar.gz
+          name: http-server-darwin-amd64-1.0.4
           path: http-server
 
   build_macos_m2:
@@ -47,7 +47,7 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: http-server-darwin-aarch64-1.0.4.tar.gz
+          name: http-server-darwin-aarch64-1.0.4
           path: http-server
 
   build_ubuntu:
@@ -67,7 +67,7 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: http-server-linux-amd64-1.0.4.tar.gz
+          name: http-server-linux-amd64-1.0.4
           path: http-server
 
 #  build_windows:
@@ -106,5 +106,5 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: http-server-windows-amd64-1.0.4.tar.gz
+          name: http-server-windows-amd64-1.0.4
           path: http-server.exe
