@@ -23,17 +23,14 @@ jobs:
       - name: Build
         run: go build -v
 
-      - name: Compress and Package
-        run: tar -czvf http-server-darwin-amd64-1.0.4.tar.gz http-server
-
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: http-server-darwin-amd64-1.0.4.tar.gz
-          path: http-server-darwin-amd64-1.0.4.tar.gz
+          path: http-server
 
   build_macos_m2:
-    runs-on: 'macos-arm64'
+    runs-on: macos-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -44,16 +41,14 @@ jobs:
           go-version: '1.20'
 
       - name: Build
-        run: go build -v
-
-      - name: Compress and Package
-        run: tar -czvf http-server-darwin-aarch64-1.0.4.tar.gz http-server
-
+        run: GOARCH=arm64 GOARM=7 CGO_ENABLED=1 go build -v
+        # GOARM=7 请根据目标设备的 ARM 版本进行设置
+        # CGO_ENABLED=1 启用 CGO，如果需要的话
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: http-server-darwin-aarch64-1.0.4.tar.gz
-          path: http-server-darwin-aarch64-1.0.4.tar.gz
+          path: http-server
 
   build_ubuntu:
     runs-on: ubuntu-latest
@@ -69,14 +64,11 @@ jobs:
       - name: Build
         run: go build -v
 
-      - name: Compress and Package
-        run: tar -czvf http-server-linux-amd64-1.0.4.tar.gz http-server
-
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: http-server-linux-amd64-1.0.4.tar.gz
-          path: http-server-linux-amd64-1.0.4.tar.gz
+          path: http-server
 
   build_windows:
     runs-on: windows-latest
@@ -92,11 +84,8 @@ jobs:
       - name: Build
         run: go build -v
 
-      - name: Compress and Package
-        run: 7z a -tzip http-server-windows-amd64-1.0.4.zip http-server
-
       - name: Upload Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: http-server-windows-amd64-1.0.4.zip
-          path: http-server-windows-amd64-1.0.4.zip
+          path: http-server.exe
