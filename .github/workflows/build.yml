@@ -1,0 +1,102 @@
+name: Build and Publish
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build_macos:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'
+
+      - name: Build
+        run: go build -v
+
+      - name: Compress and Package
+        run: tar -czvf http-server-darwin-amd64-1.0.4.tar.gz http-server
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: http-server-darwin-amd64-1.0.4.tar.gz
+          path: http-server-darwin-amd64-1.0.4.tar.gz
+
+  build_macos_m2:
+    runs-on: 'macos-arm64'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'
+
+      - name: Build
+        run: go build -v
+
+      - name: Compress and Package
+        run: tar -czvf http-server-darwin-aarch64-1.0.4.tar.gz http-server
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: http-server-darwin-aarch64-1.0.4.tar.gz
+          path: http-server-darwin-aarch64-1.0.4.tar.gz
+
+  build_ubuntu:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'
+
+      - name: Build
+        run: go build -v
+
+      - name: Compress and Package
+        run: tar -czvf http-server-linux-amd64-1.0.4.tar.gz http-server
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: http-server-linux-amd64-1.0.4.tar.gz
+          path: http-server-linux-amd64-1.0.4.tar.gz
+
+  build_windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'
+
+      - name: Build
+        run: go build -v
+
+      - name: Compress and Package
+        run: 7z a -tzip http-server-windows-amd64-1.0.4.zip http-server
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: http-server-windows-amd64-1.0.4.zip
+          path: http-server-windows-amd64-1.0.4.zip
