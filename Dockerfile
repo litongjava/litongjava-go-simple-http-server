@@ -17,6 +17,7 @@ RUN apk add --no-cache ca-certificates
 
 # Copy the app binary from the builder to the production image
 COPY --from=builder /app.out /bin/http-server
-
+# port
+EXPOSE 3000
 # Run the app when the vm starts
 CMD ["http-server"]

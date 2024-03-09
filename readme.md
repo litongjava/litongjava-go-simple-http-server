@@ -31,6 +31,14 @@ After starting the server, you can access it in your web browser using one of th
 - http://127.0.0.1:3000 (localhost)
 - http://192.168.0.100:3000 (local network)
 
+## Docker
+```docker
+docker build -t litongjava/litongjava-go-simple-http-server:1.0.0 .
+```
+
+```shell
+docker run --rm --net=host litongjava/litongjava-go-simple-http-server:1.0.0
+```
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
