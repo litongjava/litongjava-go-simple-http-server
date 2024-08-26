@@ -33,11 +33,11 @@ After starting the server, you can access it in your web browser using one of th
 
 ## Docker
 ```docker
-docker build -t litongjava/litongjava-go-simple-http-server:1.0.0 .
+docker build -t litongjava/http-server:1.0.0 .
 ```
 
 ```shell
-docker run --rm --net=host litongjava/litongjava-go-simple-http-server:1.0.0
+docker run --rm -p 3000:3000 litongjava/http-server:1.0.0
 ```
 ## License
 
